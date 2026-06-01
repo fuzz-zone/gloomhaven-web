@@ -14,55 +14,44 @@
     .header-title { font-size: 28px; font-weight: bold; letter-spacing: 0.04em; color: #c9a227; }
     .header-subtitle { font-size: 13px; color: #777777; margin-top: 10px; letter-spacing: 0.04em; }
 
-    /* Primer grid */
-    .primer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; padding: 36px 28px; max-width: 920px; margin: 0 auto; width: 100%; }
+    /* Layout */
+    .container { max-width: 820px; margin: 0 auto; width: 100%; padding: 32px 24px; }
 
-    /* Primer card */
-    .primer-card { background: #27272b; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
-    a.primer-card { text-decoration: none; color: inherit; transition: transform 0.12s ease, box-shadow 0.12s ease; }
-    a.primer-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
-    .primer-card.pending { opacity: 0.5; }
+    /* Character section (collapsible) */
+    .character { background: #27272b; border-radius: 6px; margin-bottom: 14px; overflow: hidden; border-left: 4px solid #444; }
+    .character > summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; user-select: none; transition: background 0.12s ease; }
+    .character > summary::-webkit-details-marker { display: none; }
+    .character > summary:hover { background: #2e2e33; }
+    .chev { font-size: 11px; color: #777; transition: transform 0.15s ease; display: inline-block; width: 12px; }
+    .character[open] .chev { transform: rotate(90deg); }
+    .char-name { font-size: 20px; font-weight: bold; flex: 1; }
+    .char-count { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.1em; }
 
-    /* Colored top bar */
-    .card-bar { height: 5px; }
+    /* Guide list */
+    .guide-list { list-style: none; border-top: 1px solid #333; padding: 6px 0; }
+    .guide-list a { display: flex; align-items: baseline; gap: 14px; padding: 12px 20px 12px 36px; text-decoration: none; color: inherit; transition: background 0.1s ease; border-left: 3px solid transparent; }
+    .guide-list a:hover { background: #2e2e33; border-left-color: currentColor; }
+    .guide-level { font-size: 14px; font-weight: bold; min-width: 64px; color: #c9a227; }
+    .guide-type { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #999; min-width: 96px; }
+    .guide-desc { font-size: 13px; color: #888; flex: 1; line-height: 1.45; }
 
-    /* Card body */
-    .card-body { padding: 18px 18px 12px; flex: 1; }
-    .card-class { font-size: 19px; font-weight: bold; margin-bottom: 3px; }
-    .card-level { font-size: 11px; text-transform: uppercase; letter-spacing: 0.09em; color: #777777; margin-bottom: 12px; }
-    .card-desc { font-size: 13px; color: #999999; line-height: 1.55; }
-
-    /* Card footer */
-    .card-foot { padding: 12px 18px 16px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #333333; margin-top: 14px; }
-    .card-status { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; }
-    .status-ready { color: #5aaa5a; }
-    .status-soon  { color: #555555; }
-    .card-cta { font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.07em; padding: 6px 13px; border-radius: 3px; }
-
-    /* Demolitionist — fire + earth */
-    .c-demo .card-bar  { background: linear-gradient(to right, #C05000 50%, #6B7D20 50%); }
-    .c-demo .card-class { color: #c97040; }
-    .c-demo .card-cta  { background: #C05000; color: #ffffff; }
-
-    /* Red Guard — crimson + gold */
-    .c-redguard .card-bar  { background: linear-gradient(to right, #8B1A1A 50%, #c9a227 50%); }
-    .c-redguard .card-class { color: #c04040; }
-
-    /* Red Guard CTA */
-    .c-redguard .card-cta { background: #8B1A1A; color: #ffffff; }
-
-    /* Demolitionist L4 — same fire + earth */
-    .c-demo-l4 .card-bar  { background: linear-gradient(to right, #C05000 50%, #6B7D20 50%); }
-    .c-demo-l4 .card-class { color: #c97040; }
-    .c-demo-l4 .card-cta  { background: #C05000; color: #ffffff; }
+    /* Per-character accents */
+    .c-demo { border-left-color: #C05000; }
+    .c-demo .char-name { color: #c97040; }
+    .c-redguard { border-left-color: #8B1A1A; }
+    .c-redguard .char-name { color: #c04040; }
 
     /* Footer */
     .site-footer { text-align: center; padding: 20px; font-size: 11px; color: #3d3d3d; border-top: 1px solid #252525; margin-top: auto; }
 
-    @media (max-width: 500px) {
-      .primer-grid { padding: 22px 14px; gap: 14px; }
+    @media (max-width: 560px) {
+      .container { padding: 22px 14px; }
       .header { padding: 28px 18px 22px; }
       .header-title { font-size: 22px; }
+      .guide-list a { flex-wrap: wrap; padding: 12px 16px 12px 28px; gap: 6px 14px; }
+      .guide-level { min-width: auto; }
+      .guide-type { min-width: auto; }
+      .guide-desc { flex-basis: 100%; }
     }
   </style>
 </head>
@@ -74,54 +63,53 @@
     <div class="header-subtitle">Campaign Primers — quick-reference guides for each character class</div>
   </div>
 
-  <div class="primer-grid">
+  <div class="container">
 
-    <!-- Demolitionist Level 3 — active -->
-    <a href="demolitionist_level_3.html" class="primer-card c-demo">
-      <div class="card-bar"></div>
-      <div class="card-body">
-        <div class="card-class">Demolitionist</div>
-        <div class="card-level">Level 3 &nbsp;&middot;&nbsp; Jaws of the Lion</div>
-        <div class="card-desc">Obstacle-smashing melee brawler who generates fire and earth elements. Deals bonus damage near walls and gains powerful effects whenever something gets destroyed.</div>
-      </div>
-      <div class="card-foot">
-        <span class="card-status status-ready">Ready</span>
-        <span class="card-cta">View Primer &rarr;</span>
-      </div>
-    </a>
+    <details class="character c-demo">
+      <summary>
+        <span class="chev">&#9656;</span>
+        <span class="char-name">Demolitionist</span>
+        <span class="char-count">2 guides</span>
+      </summary>
+      <ul class="guide-list">
+        <li>
+          <a href="demolitionist_levelup_4.html">
+            <span class="guide-level">Level 4</span>
+            <span class="guide-type">Decisions</span>
+            <span class="guide-desc">Which Level 4 cards to add, which to retire, and how each choice shifts the playstyle.</span>
+          </a>
+        </li>
+        <li>
+          <a href="demolitionist_level_3.html">
+            <span class="guide-level">Level 3</span>
+            <span class="guide-type">Primer</span>
+            <span class="guide-desc">Obstacle-smashing melee brawler who generates fire and earth; bonus damage near walls and on destruction triggers.</span>
+          </a>
+        </li>
+      </ul>
+    </details>
 
-    <!-- Red Guard — active -->
-    <a href="redguard_level_4.html" class="primer-card c-redguard">
-      <div class="card-bar"></div>
-      <div class="card-body">
-        <div class="card-class">Red Guard</div>
-        <div class="card-level">Jaws of the Lion</div>
-        <div class="card-desc">Polearm-and-shield defensive fighter who protects allies, controls the front line, and converts absorbed punishment into offensive pressure.</div>
-      </div>
-      <div class="card-foot">
-        <span class="card-status status-ready">Ready</span>
-        <span class="card-cta">View Primer &rarr;</span>
-      </div>
-    </a>
-
-    <!-- Demolitionist Level 4 Decisions — active -->
-    <a href="demolitionist_levelup_4.html" class="primer-card c-demo-l4">
-      <div class="card-bar"></div>
-      <div class="card-body">
-        <div class="card-class">Demolitionist</div>
-        <div class="card-level">Level 4 Decisions &nbsp;&middot;&nbsp; Jaws of the Lion</div>
-        <div class="card-desc">Guidance on which Level 4 cards to add to your hand, which to retire, and how each choice shifts the Demolitionist's playstyle going forward.</div>
-      </div>
-      <div class="card-foot">
-        <span class="card-status status-ready">Ready</span>
-        <span class="card-cta">View Primer &rarr;</span>
-      </div>
-    </a>
+    <details class="character c-redguard">
+      <summary>
+        <span class="chev">&#9656;</span>
+        <span class="char-name">Red Guard</span>
+        <span class="char-count">1 guide</span>
+      </summary>
+      <ul class="guide-list">
+        <li>
+          <a href="redguard_level_4.html">
+            <span class="guide-level">Level 4</span>
+            <span class="guide-type">Primer</span>
+            <span class="guide-desc">Polearm-and-shield defensive fighter who protects allies, controls the front line, and converts absorbed punishment into pressure.</span>
+          </a>
+        </li>
+      </ul>
+    </details>
 
   </div>
 
   <div class="site-footer">
-    Gloomhaven: Jaws of the Lion &nbsp;&middot;&nbsp; Tabletop edition &nbsp;&middot;&nbsp; fuzz-zone/Gloomhaven-web
+    Gloomhaven: Jaws of the Lion &nbsp;&middot;&nbsp; Tabletop edition &nbsp;&middot;&nbsp; fuzz-zone/gloomhaven-web
   </div>
 
 </body>
