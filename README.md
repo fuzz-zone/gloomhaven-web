@@ -2,4 +2,4 @@
 
 Character sheets for Gloomhaven.
 
-Live site: https://fuzz-zone.github.io/Gloomhaven-web/
+Live site: https://fuzz-zone.github.io/gloomhaven-web/
