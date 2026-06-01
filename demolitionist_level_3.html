@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demolitionist — Level 3 Primer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Helvetica, Arial, sans-serif; background: #e8e6e3; color: #1a1a1a; font-size: 15px; line-height: 1.5; }
+
+    /* Header */
+    .header { background: #2b2b2b; color: #ffffff; text-align: center; padding: 14px 24px 16px; }
+    .header-back { margin-bottom: 10px; }
+    .header-back a { color: #888888; font-size: 12px; text-decoration: none; letter-spacing: 0.05em; }
+    .header-back a:hover { color: #aaaaaa; }
+    .header-title { font-size: 28px; font-weight: bold; letter-spacing: 0.03em; }
+    .header-subtitle { font-size: 12px; color: #aaaaaa; margin-top: 5px; letter-spacing: 0.09em; text-transform: uppercase; }
+
+    /* Stat row */
+    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); background: #dddbd8; border-bottom: 1px solid #cccccc; }
+    .stat-cell { text-align: center; padding: 11px 6px; border-right: 1px solid #cccccc; }
+    .stat-cell:last-child { border-right: none; }
+    .stat-label { font-size: 10px; color: #888888; text-transform: uppercase; letter-spacing: 0.07em; }
+    .stat-value { font-size: 17px; font-weight: bold; color: #1a1a1a; margin-top: 3px; }
+
+    /* Warning box */
+    .warning-box { background: #fff3cd; border-left: 4px solid #c9a227; color: #5a3e00; padding: 11px 16px; margin: 14px 14px 4px; border-radius: 3px; font-size: 13px; }
+    .warning-box strong { font-weight: bold; }
+
+    /* Sections */
+    .section { padding: 0 14px 18px; }
+    .section-title { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.11em; color: #888888; padding: 15px 0 9px; border-top: 1px solid #cccccc; margin-bottom: 8px; }
+
+    /* Card grid */
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .card { background: #f8f7f5; border: 1px solid #dddddd; border-radius: 4px; padding: 10px 12px; }
+    .card-name { font-weight: bold; font-size: 13px; color: #1a1a1a; }
+    .card-init { font-size: 11px; color: #888888; margin-bottom: 6px; }
+    .card-action { font-size: 12px; color: #1a1a1a; margin-top: 5px; line-height: 1.45; }
+
+    /* Tactics & watch-outs */
+    .row { padding: 8px 0; border-bottom: 1px solid #cccccc; display: grid; grid-template-columns: 120px 1fr; gap: 12px; align-items: start; }
+    .row:last-child { border-bottom: none; }
+    .row-label { font-weight: bold; font-size: 13px; color: #1a1a1a; }
+    .row-label.danger { color: #A32020; }
+    .row-body { font-size: 13px; color: #555555; }
+
+    /* Combos */
+    .combo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .combo { background: #f4f2f9; border-left: 3px solid #555555; border-radius: 3px; padding: 10px 12px; }
+    .combo-title { font-weight: bold; font-size: 13px; color: #1a1a1a; margin-bottom: 4px; }
+    .combo-body { font-size: 12px; color: #555555; line-height: 1.45; }
+
+    /* Footer */
+    .footer { padding: 10px 14px 24px; }
+    .footer-rule { border: none; border-top: 1px solid #cccccc; margin-bottom: 9px; }
+    .footer-text { font-size: 11px; color: #888888; text-align: center; }
+
+    /* Badges */
+    .b-top   { color: #1a1a1a; font-weight: bold; }
+    .b-bot   { color: #1a1a1a; font-weight: bold; }
+    .b-burn  { color: #A32020; font-weight: bold; }
+    .b-perm  { color: #7A3A1A; font-weight: bold; }
+    .b-fire  { color: #C05000; font-weight: bold; }
+    .b-earth { color: #6B7D20; font-weight: bold; }
+
+    /* Conditions */
+    .cond { font-weight: bold; }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .card-grid  { grid-template-columns: 1fr; }
+      .combo-grid { grid-template-columns: 1fr; }
+      .row        { grid-template-columns: 1fr; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-back"><a href="index.html">← Campaign Hub</a></div>
+    <div class="header-title">Demolitionist</div>
+    <div class="header-subtitle">Gloomhaven: Jaws of the Lion &nbsp;&middot;&nbsp; Level 3</div>
+  </div>
+
+  <!-- Stat row -->
+  <div class="stat-row">
+    <div class="stat-cell">
+      <div class="stat-label">HP</div>
+      <div class="stat-value">11</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Hand Size</div>
+      <div class="stat-value">9</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Elements</div>
+      <div class="stat-value"><span class="b-fire">[fire]</span> <span class="b-earth">[earth]</span></div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value">Medium</div>
+    </div>
+  </div>
+
+  <!-- Warning box -->
+  <div class="warning-box">
+    <strong>No healing.</strong> You cannot restore your own HP. Play conservatively when health is low — let teammates draw aggro and create distance.
+  </div>
+
+  <!-- Card grid -->
+  <div class="section">
+    <div class="section-title">Your Hand</div>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-name">Explosive Blitz</div>
+        <div class="card-init">Initiative 19</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 2, range 4. Creates <span class="b-fire">[fire]</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> <span class="b-burn">[BURN]</span> Move 3; open a door during this move &rarr; <span class="cond">{stun}</span> all enemies within range 3.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Knockout the Support</div>
+        <div class="card-init">Initiative 20</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 3; that enemy cannot be healed this round. Creates <span class="b-earth">[earth]</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 2; destroy an adjacent obstacle &rarr; <span class="cond">{strengthen}</span> yourself.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Crushing Weight</div>
+        <div class="card-init">Initiative 22</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 3; +2 attack if target is adjacent to a wall. (Attack 5 total.)</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 2; one enemy adjacent to you <em>and</em> a wall suffers 2 damage.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Firebombs</div>
+        <div class="card-init">Initiative 24</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 2, range 4, target 2. Creates <span class="b-fire">[fire]</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 2; destroy an adjacent obstacle &rarr; all enemies adjacent to that obstacle suffer 2 damage.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Robotic Enhancement</div>
+        <div class="card-init">Initiative 33</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 2, <span class="cond">{stun}</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 4; this movement ignores difficult terrain.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">The Big One</div>
+        <div class="card-init">Initiative 37</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> <span class="b-burn">[BURN]</span> Attack 3, range 2, large area. Creates <span class="b-fire">[fire]</span> + <span class="b-earth">[earth]</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 3; destroy an adjacent obstacle &rarr; <span class="cond">{bless}</span> yourself.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Piston Punch</div>
+        <div class="card-init">Initiative 42</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 2, push 2; consume <span class="b-fire">[fire]</span> &rarr; attack 3, push 3.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> <span class="cond">{stun}</span> one adjacent enemy; consume <span class="b-earth">[earth]</span> to also apply <span class="cond">{poison}</span>.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">One Two Punch</div>
+        <div class="card-init">Initiative 66</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 2, then attack 1; if both hit the same enemy &rarr; push 2 + <span class="cond">{muddle}</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Attack 1, loot 1.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Implode</div>
+        <div class="card-init">Initiative 88</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 3; consume <span class="b-earth">[earth]</span> &rarr; attack 4 + <span class="cond">{muddle}</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 3; destroy one obstacle within range 3.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Tactics -->
+  <div class="section">
+    <div class="section-title">Tactics</div>
+
+    <div class="row">
+      <div class="row-label">Use walls</div>
+      <div class="row-body">Crushing Weight TOP hits for 5 when the target is against a wall. You don't need to set this up — corners and corridors do the work. Look for enemies already pinned by the dungeon layout.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Break things</div>
+      <div class="row-body">Destroying obstacles unlocks bonuses: Firebombs BOT deals 2 damage to all enemies adjacent to the destroyed obstacle, The Big One BOT blesses you, Knockout the Support BOT strengthens you. If there's something to break, breaking it is usually the right call.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Elements need a round</div>
+      <div class="row-body">You generate <span class="b-fire">[fire]</span> or <span class="b-earth">[earth]</span> at the end of your turn — you can't spend it yourself until the following round. Play a generating card early so the element is ready for a consuming card next round.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Robotic Enhancement</div>
+      <div class="row-body">Your most reliable control card. Attack 2 + <span class="cond">{stun}</span> on any enemy, no conditions required. Use it on the enemy that's causing the most trouble.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Save your burns</div>
+      <div class="row-body">Explosive Blitz BOT and The Big One TOP are both <span class="b-burn">[BURN]</span> — gone for the scenario once used. Firebombs is fully reusable. Hold the burns for the moments where the payoff is biggest.</div>
+    </div>
+
+  </div>
+
+  <!-- Combos -->
+  <div class="section">
+    <div class="section-title">Combos</div>
+    <div class="combo-grid">
+
+      <div class="combo">
+        <div class="combo-title">Generate &rarr; Spend Fire</div>
+        <div class="combo-body">Play Explosive Blitz TOP, Firebombs TOP, or The Big One TOP to create <span class="b-fire">[fire]</span>. Next round, spend it on Piston Punch TOP for attack 3, push 3.</div>
+      </div>
+
+      <div class="combo">
+        <div class="combo-title">Generate &rarr; Spend Earth</div>
+        <div class="combo-body">Knockout the Support TOP or The Big One TOP creates <span class="b-earth">[earth]</span>. Next round, spend it on Implode TOP (attack 4 + <span class="cond">{muddle}</span>) or Piston Punch BOT (stun + <span class="cond">{poison}</span>).</div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- Watch out for -->
+  <div class="section">
+    <div class="section-title">Watch Out For</div>
+
+    <div class="row">
+      <div class="row-label danger">Crushing Weight BOT</div>
+      <div class="row-body">The bottom action requires the target to be adjacent to both <em>you</em> and a <em>wall</em>. If the wall condition isn't met, the effect does nothing — check the layout before committing.</div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <hr class="footer-rule">
+    <div class="footer-text">Gloomhaven: Jaws of the Lion &nbsp;&middot;&nbsp; Tabletop edition &nbsp;&middot;&nbsp; Demolitionist Level 3 &nbsp;&middot;&nbsp; fuzz-zone/Gloomhaven</div>
+  </div>
+
+</body>
+</html>

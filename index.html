@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gloomhaven: Jaws of the Lion — Campaign Primers</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Helvetica, Arial, sans-serif; background: #1c1c1e; color: #e8e6e3; font-size: 15px; line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* Header */
+    .header { background: #111111; text-align: center; padding: 40px 24px 32px; border-bottom: 1px solid #2a2a2a; }
+    .header-eyebrow { font-size: 11px; color: #666666; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
+    .header-title { font-size: 28px; font-weight: bold; letter-spacing: 0.04em; color: #c9a227; }
+    .header-subtitle { font-size: 13px; color: #777777; margin-top: 10px; letter-spacing: 0.04em; }
+
+    /* Primer grid */
+    .primer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; padding: 36px 28px; max-width: 920px; margin: 0 auto; width: 100%; }
+
+    /* Primer card */
+    .primer-card { background: #27272b; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+    a.primer-card { text-decoration: none; color: inherit; transition: transform 0.12s ease, box-shadow 0.12s ease; }
+    a.primer-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
+    .primer-card.pending { opacity: 0.5; }
+
+    /* Colored top bar */
+    .card-bar { height: 5px; }
+
+    /* Card body */
+    .card-body { padding: 18px 18px 12px; flex: 1; }
+    .card-class { font-size: 19px; font-weight: bold; margin-bottom: 3px; }
+    .card-level { font-size: 11px; text-transform: uppercase; letter-spacing: 0.09em; color: #777777; margin-bottom: 12px; }
+    .card-desc { font-size: 13px; color: #999999; line-height: 1.55; }
+
+    /* Card footer */
+    .card-foot { padding: 12px 18px 16px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #333333; margin-top: 14px; }
+    .card-status { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; }
+    .status-ready { color: #5aaa5a; }
+    .status-soon  { color: #555555; }
+    .card-cta { font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.07em; padding: 6px 13px; border-radius: 3px; }
+
+    /* Demolitionist — fire + earth */
+    .c-demo .card-bar  { background: linear-gradient(to right, #C05000 50%, #6B7D20 50%); }
+    .c-demo .card-class { color: #c97040; }
+    .c-demo .card-cta  { background: #C05000; color: #ffffff; }
+
+    /* Red Guard — crimson + gold */
+    .c-redguard .card-bar  { background: linear-gradient(to right, #8B1A1A 50%, #c9a227 50%); }
+    .c-redguard .card-class { color: #c04040; }
+
+    /* Red Guard CTA */
+    .c-redguard .card-cta { background: #8B1A1A; color: #ffffff; }
+
+    /* Demolitionist L4 — same fire + earth */
+    .c-demo-l4 .card-bar  { background: linear-gradient(to right, #C05000 50%, #6B7D20 50%); }
+    .c-demo-l4 .card-class { color: #c97040; }
+    .c-demo-l4 .card-cta  { background: #C05000; color: #ffffff; }
+
+    /* Footer */
+    .site-footer { text-align: center; padding: 20px; font-size: 11px; color: #3d3d3d; border-top: 1px solid #252525; margin-top: auto; }
+
+    @media (max-width: 500px) {
+      .primer-grid { padding: 22px 14px; gap: 14px; }
+      .header { padding: 28px 18px 22px; }
+      .header-title { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-eyebrow">Tabletop Reference</div>
+    <div class="header-title">Gloomhaven: Jaws of the Lion</div>
+    <div class="header-subtitle">Campaign Primers — quick-reference guides for each character class</div>
+  </div>
+
+  <div class="primer-grid">
+
+    <!-- Demolitionist Level 3 — active -->
+    <a href="demolitionist_level_3.html" class="primer-card c-demo">
+      <div class="card-bar"></div>
+      <div class="card-body">
+        <div class="card-class">Demolitionist</div>
+        <div class="card-level">Level 3 &nbsp;&middot;&nbsp; Jaws of the Lion</div>
+        <div class="card-desc">Obstacle-smashing melee brawler who generates fire and earth elements. Deals bonus damage near walls and gains powerful effects whenever something gets destroyed.</div>
+      </div>
+      <div class="card-foot">
+        <span class="card-status status-ready">Ready</span>
+        <span class="card-cta">View Primer &rarr;</span>
+      </div>
+    </a>
+
+    <!-- Red Guard — active -->
+    <a href="redguard_level_4.html" class="primer-card c-redguard">
+      <div class="card-bar"></div>
+      <div class="card-body">
+        <div class="card-class">Red Guard</div>
+        <div class="card-level">Jaws of the Lion</div>
+        <div class="card-desc">Polearm-and-shield defensive fighter who protects allies, controls the front line, and converts absorbed punishment into offensive pressure.</div>
+      </div>
+      <div class="card-foot">
+        <span class="card-status status-ready">Ready</span>
+        <span class="card-cta">View Primer &rarr;</span>
+      </div>
+    </a>
+
+    <!-- Demolitionist Level 4 Decisions — active -->
+    <a href="demolitionist_levelup_4.html" class="primer-card c-demo-l4">
+      <div class="card-bar"></div>
+      <div class="card-body">
+        <div class="card-class">Demolitionist</div>
+        <div class="card-level">Level 4 Decisions &nbsp;&middot;&nbsp; Jaws of the Lion</div>
+        <div class="card-desc">Guidance on which Level 4 cards to add to your hand, which to retire, and how each choice shifts the Demolitionist's playstyle going forward.</div>
+      </div>
+      <div class="card-foot">
+        <span class="card-status status-ready">Ready</span>
+        <span class="card-cta">View Primer &rarr;</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="site-footer">
+    Gloomhaven: Jaws of the Lion &nbsp;&middot;&nbsp; Tabletop edition &nbsp;&middot;&nbsp; fuzz-zone/Gloomhaven-web
+  </div>
+
+</body>
+</html>

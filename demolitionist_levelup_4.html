@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demolitionist — Level 4 Level-Up Guide</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Helvetica, Arial, sans-serif; background: #e8e6e3; color: #1a1a1a; font-size: 15px; line-height: 1.5; }
+
+    /* Header */
+    .header { background: #2b2b2b; color: #ffffff; text-align: center; padding: 20px 24px 16px; }
+    .header-title { font-size: 28px; font-weight: bold; letter-spacing: 0.03em; }
+    .header-subtitle { font-size: 12px; color: #aaaaaa; margin-top: 5px; letter-spacing: 0.09em; text-transform: uppercase; }
+
+    /* Stat row */
+    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); background: #dddbd8; border-bottom: 1px solid #cccccc; }
+    .stat-cell { text-align: center; padding: 11px 6px; border-right: 1px solid #cccccc; }
+    .stat-cell:last-child { border-right: none; }
+    .stat-label { font-size: 10px; color: #888888; text-transform: uppercase; letter-spacing: 0.07em; }
+    .stat-value { font-size: 17px; font-weight: bold; color: #1a1a1a; margin-top: 3px; }
+
+    /* Info / warning box */
+    .info-box { background: #fff3cd; border-left: 4px solid #c9a227; color: #5a3e00; padding: 12px 16px; margin: 14px 14px 4px; border-radius: 3px; font-size: 13px; }
+    .info-box strong { font-weight: bold; }
+    .info-box p + p { margin-top: 6px; }
+
+    /* Sections */
+    .section { padding: 0 14px 18px; }
+    .section-title { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.11em; color: #888888; padding: 15px 0 9px; border-top: 1px solid #cccccc; margin-bottom: 8px; }
+    .section-intro { font-size: 13px; color: #555555; margin-bottom: 10px; line-height: 1.5; }
+
+    /* Card grid (new cards) */
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .card { background: #f8f7f5; border: 1px solid #dddddd; border-radius: 4px; padding: 10px 12px; }
+    .card-name { font-weight: bold; font-size: 14px; color: #1a1a1a; }
+    .card-init { font-size: 11px; color: #888888; margin-bottom: 6px; }
+    .card-action { font-size: 12px; color: #1a1a1a; margin-top: 5px; line-height: 1.45; }
+    .card-takeaway { font-size: 12px; color: #555555; margin-top: 8px; padding-top: 6px; border-top: 1px dashed #dddddd; font-style: italic; }
+
+    /* Path comparison */
+    .path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .path { background: #f4f2f9; border-left: 3px solid #555555; border-radius: 3px; padding: 12px 14px; }
+    .path-header { font-weight: bold; font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+    .path-subtitle { font-size: 11px; color: #888888; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+    .path-body { font-size: 13px; color: #1a1a1a; line-height: 1.5; }
+    .path-body p + p { margin-top: 6px; }
+    .path-hand { font-size: 12px; color: #555555; margin-top: 8px; padding-top: 6px; border-top: 1px dashed #cccccc; }
+    .path-hand strong { color: #1a1a1a; }
+
+    /* Tactics-style rows */
+    .row { padding: 10px 0; border-bottom: 1px solid #cccccc; display: grid; grid-template-columns: 140px 1fr; gap: 12px; align-items: start; }
+    .row:last-child { border-bottom: none; }
+    .row-label { font-weight: bold; font-size: 13px; color: #1a1a1a; }
+    .row-body { font-size: 13px; color: #555555; }
+    .row-body p + p { margin-top: 6px; }
+
+    /* Recommendation box */
+    .rec-box { background: #eaf3ec; border-left: 4px solid #1E5C35; color: #143b22; padding: 12px 16px; margin: 14px 14px 4px; border-radius: 3px; font-size: 13px; }
+    .rec-box strong { font-weight: bold; }
+    .rec-box p + p { margin-top: 6px; }
+
+    /* Footer */
+    .footer { padding: 10px 14px 24px; }
+    .footer-rule { border: none; border-top: 1px solid #cccccc; margin-bottom: 9px; }
+    .footer-text { font-size: 11px; color: #888888; text-align: center; }
+
+    /* Badges */
+    .b-top   { color: #1a1a1a; font-weight: bold; }
+    .b-bot   { color: #1a1a1a; font-weight: bold; }
+    .b-burn  { color: #A32020; font-weight: bold; }
+    .b-perm  { color: #7A3A1A; font-weight: bold; }
+    .b-fire  { color: #C05000; font-weight: bold; }
+    .b-earth { color: #6B7D20; font-weight: bold; }
+
+    /* Conditions */
+    .cond { font-weight: bold; }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .card-grid  { grid-template-columns: 1fr; }
+      .path-grid  { grid-template-columns: 1fr; }
+      .row        { grid-template-columns: 1fr; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">Level Up to 4!</div>
+    <div class="header-subtitle">Demolitionist &nbsp;&middot;&nbsp; Time to Choose Your Direction</div>
+  </div>
+
+  <!-- Stat row: what's changing -->
+  <div class="stat-row">
+    <div class="stat-cell">
+      <div class="stat-label">New HP</div>
+      <div class="stat-value">12</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Hand Size</div>
+      <div class="stat-value">9</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">New Cards</div>
+      <div class="stat-value">2 Options</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Perks</div>
+      <div class="stat-value">+1</div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="info-box">
+    <p><strong>Leveling up isn't just picking a card.</strong> You can also rework your hand — swap out earlier choices, bring back cards you skipped. Use this as a chance to step back and ask: <em>is the Demolitionist playing the way I want?</em></p>
+    <p>This guide walks through the new cards, two directions you could go, and how the swap rule works.</p>
+  </div>
+
+  <!-- The two new cards -->
+  <div class="section">
+    <div class="section-title">The Two New Cards</div>
+    <div class="section-intro">At level 4 you choose <strong>one</strong> of these to add to your card pool. (You don't have to use it every scenario, but you'd own it.)</div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-name">Extra Fuel</div>
+        <div class="card-init">Initiative 17 &nbsp;&middot;&nbsp; one of your fastest</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 3; +2 attack and <span class="cond">{wound}</span> if the target is next to a wall (attack 5 total). Creates <span class="b-fire">[fire]</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 5; consume <span class="b-fire">[fire]</span> &rarr; attack 1 at the end of the move.</div>
+        <div class="card-takeaway">A stronger version of Crushing Weight, plus the best move card you've ever had. Reliable, no setup needed.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Remote Detonation</div>
+        <div class="card-init">Initiative 63 &nbsp;&middot;&nbsp; slow</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Destroy an obstacle within range 4; attack 2 to all enemies next to that obstacle. Consume <span class="b-fire">[fire]</span> &rarr; attack 3.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> <span class="b-burn">[BURN]</span> Create three 3-damage traps in empty hexes within range 4.</div>
+        <div class="card-takeaway">A "blow stuff up from range" card. Big payoff when obstacles are conveniently placed, less useful when they aren't.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Two paths -->
+  <div class="section">
+    <div class="section-title">Two Directions You Could Take</div>
+    <div class="section-intro">Your current hand leans toward <strong>walls and stunning</strong>. Level 4 is a good moment to either double down on that, or pivot to something different. Both are legitimate — pick what sounds fun.</div>
+
+    <div class="path-grid">
+
+      <div class="path">
+        <div class="path-header">A. Keep Going: Walls &amp; Booms</div>
+        <div class="path-subtitle">Your current direction</div>
+        <div class="path-body">
+          <p>You smash enemies into walls, stun the dangerous ones with Robotic Enhancement, and clear groups with Firebombs. <strong>Extra Fuel</strong> fits straight into this — it's a stronger Crushing Weight with a big move on the bottom.</p>
+          <p>Steady and reliable. Works regardless of scenario layout. Doesn't need much setup or planning.</p>
+        </div>
+        <div class="path-hand">
+          <strong>L4 hand suggestion:</strong> swap <em>The Big One</em> (you rarely play it) for Extra Fuel. Everything else stays.
+        </div>
+      </div>
+
+      <div class="path">
+        <div class="path-header">B. Pivot: Burst Damage</div>
+        <div class="path-subtitle">Bigger change, bigger ceiling</div>
+        <div class="path-body">
+          <p>A different style: line up a single huge hit on one enemy by stacking Wind Up (a "charge up" card) with your wall attacks. Trade reliable stunning for explosive burst.</p>
+          <p>Higher damage ceiling — Crushing Weight + Wind Up + Extra Fuel against a wall can hit for 7–9 damage in one swing. But more setup-dependent, and you give up some stunning safety.</p>
+        </div>
+        <div class="path-hand">
+          <strong>Requires multiple swaps</strong> — see "Reshaping Your Hand" below.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mulligan rules -->
+  <div class="section">
+    <div class="section-title">Reshaping Your Hand (Mulligans)</div>
+
+    <div class="row">
+      <div class="row-label">The house rule</div>
+      <div class="row-body">At our table you can swap <em>any</em> past card choice when you level up. Took Robotic Enhancement at level 2? You can give it back and take Crash Protocol instead. Took Firebombs at level 3? You can swap it for Nowhere to Run. Nothing is locked in.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Always available</div>
+      <div class="row-body">The three "X" cards — <strong>Level</strong>, <strong>Lobbed Charge</strong>, and <strong>Rubble</strong> — are sideboard cards you can swap in or out for any scenario, regardless of level. Worth checking each scenario to see if one fits.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Path A swaps</div>
+      <div class="row-body">Just one: <strong>drop The Big One, add Extra Fuel</strong>. That's it. Your hand keeps the same shape.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Path B swaps</div>
+      <div class="row-body">
+        <p>Bigger restructuring. To pivot into the burst style:</p>
+        <p>&bull; Bring back <strong>Wind Up</strong> (you skipped it at level 1).<br>
+           &bull; Swap <strong>Robotic Enhancement &rarr; Crash Protocol</strong> at level 2.<br>
+           &bull; Swap <strong>Firebombs &rarr; Nowhere to Run</strong> at level 3.<br>
+           &bull; Add <strong>Extra Fuel</strong> at level 4.<br>
+           &bull; Drop the cards that no longer fit (Explosive Blitz, Knockout the Support, Implode all leave the hand).</p>
+        <p>This is a real commitment — you're rebuilding most of the hand. Worth it if the current style isn't clicking, less worth it if it is.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- What each path's hand looks like -->
+  <div class="section">
+    <div class="section-title">What Each Hand Looks Like at Level 4</div>
+
+    <div class="path-grid">
+
+      <div class="path">
+        <div class="path-header">Path A — Walls &amp; Booms</div>
+        <div class="path-body">
+          <p><strong>Extra Fuel</strong> (17) — your new big wall attack &amp; best move.<br>
+             <strong>Explosive Blitz</strong> (19) — fast attack + emergency stun.<br>
+             <strong>Knockout the Support</strong> (20) — strengthen yourself.<br>
+             <strong>Crushing Weight</strong> (22) — wall damage workhorse.<br>
+             <strong>Firebombs</strong> (24) — ranged AOE + obstacle bonus.<br>
+             <strong>Robotic Enhancement</strong> (33) — stun anyone, anytime.<br>
+             <strong>Piston Punch</strong> (42) — push enemies into walls.<br>
+             <strong>One Two Punch</strong> (66) — double hit + push.<br>
+             <strong>Implode</strong> (88) — late-round attack + obstacle clear.</p>
+        </div>
+      </div>
+
+      <div class="path">
+        <div class="path-header">Path B — Burst Damage</div>
+        <div class="path-body">
+          <p><strong>Extra Fuel</strong> (17) — your new big wall attack &amp; best move.<br>
+             <strong>Crushing Weight</strong> (22) — wall damage workhorse.<br>
+             <strong>The Big One</strong> (37) — big AOE finisher (kept for late-game burn).<br>
+             <strong>Nowhere to Run</strong> (39) — single-target nuke (loss).<br>
+             <strong>Piston Punch</strong> (42) — push enemies into walls.<br>
+             <strong>Lobbed Charge</strong> (X, 52) — trap setup + fire.<br>
+             <strong>One Two Punch</strong> (66) — double hit + push.<br>
+             <strong>Crash Protocol</strong> (74) — wall-attack buff (loss).<br>
+             <strong>Wind Up</strong> (77) — charge up the next two attacks.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Recommendation -->
+  <div class="rec-box">
+    <p><strong>If you're enjoying how the Demolitionist plays right now, Path A is the easy call.</strong> Extra Fuel makes your strongest combo even stronger, drops a card you rarely use (The Big One), and you don't have to relearn anything.</p>
+    <p><strong>If something feels off</strong> — maybe stunning isn't doing it for you, maybe you want bigger single hits, maybe the current hand feels too situational — Path B is a real option. Speak up; we can walk through what changes feel like in play before committing.</p>
+    <p>Either way, the X-card sideboarding (Level / Lobbed Charge / Rubble) is worth using more often. Check each scenario.</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <hr class="footer-rule">
+    <div class="footer-text">Gloomhaven: Jaws of the Lion &nbsp;&middot;&nbsp; Tabletop edition &nbsp;&middot;&nbsp; Demolitionist Level 4 Level-Up Guide &nbsp;&middot;&nbsp; fuzz-zone/Gloomhaven</div>
+  </div>
+
+</body>
+</html>

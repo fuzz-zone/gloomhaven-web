@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Guard — Level 4 Primer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Helvetica, Arial, sans-serif; background: #e8e6e3; color: #1a1a1a; font-size: 15px; line-height: 1.5; }
+
+    /* Header */
+    .header { background: #5C0F0F; color: #F5EDD8; text-align: center; padding: 20px 24px 16px; }
+    .header-title { font-size: 28px; font-weight: bold; letter-spacing: 0.03em; }
+    .header-subtitle { font-size: 12px; color: #c9a27a; margin-top: 5px; letter-spacing: 0.09em; text-transform: uppercase; }
+
+    /* Stat row */
+    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); background: #dddbd8; border-bottom: 2px solid #8B1A1A; }
+    .stat-cell { text-align: center; padding: 11px 6px; border-right: 1px solid #cccccc; }
+    .stat-cell:last-child { border-right: none; }
+    .stat-label { font-size: 10px; color: #888888; text-transform: uppercase; letter-spacing: 0.07em; }
+    .stat-value { font-size: 17px; font-weight: bold; color: #1a1a1a; margin-top: 3px; }
+
+    /* Warning box */
+    .warning-box { background: #F5EDD8; border-left: 4px solid #C9972A; color: #5C0F0F; padding: 11px 16px; margin: 14px 14px 4px; border-radius: 3px; font-size: 13px; }
+    .warning-box strong { font-weight: bold; }
+
+    /* Sections */
+    .section { padding: 0 14px 18px; }
+    .section-title { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.11em; color: #5C0F0F; padding: 15px 0 9px; border-top: 1px solid #cccccc; margin-bottom: 8px; }
+
+    /* Card grid */
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .card { background: #f9f6f2; border: 1px solid #ddd8d0; border-radius: 4px; padding: 10px 12px; }
+    .card-name { font-weight: bold; font-size: 13px; color: #1a1a1a; }
+    .card-init { font-size: 11px; color: #888888; margin-bottom: 6px; }
+    .card-action { font-size: 12px; color: #1a1a1a; margin-top: 5px; line-height: 1.45; }
+
+    /* Tactics & watch-outs */
+    .row { padding: 8px 0; border-bottom: 1px solid #cccccc; display: grid; grid-template-columns: 130px 1fr; gap: 12px; align-items: start; }
+    .row:last-child { border-bottom: none; }
+    .row-label { font-weight: bold; font-size: 13px; color: #1a1a1a; }
+    .row-label.danger { color: #A32020; }
+    .row-body { font-size: 13px; color: #555555; }
+
+    /* Combos */
+    .combo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .combo { background: #F9F4F2; border-left: 3px solid #8B1A1A; border-radius: 3px; padding: 10px 12px; }
+    .combo-title { font-weight: bold; font-size: 13px; color: #1a1a1a; margin-bottom: 4px; }
+    .combo-body { font-size: 12px; color: #555555; line-height: 1.45; }
+
+    /* Footer */
+    .footer { padding: 10px 14px 24px; }
+    .footer-rule { border: none; border-top: 1px solid #cccccc; margin-bottom: 9px; }
+    .footer-text { font-size: 11px; color: #888888; text-align: center; }
+
+    /* Badges */
+    .b-top   { color: #1a1a1a; font-weight: bold; }
+    .b-bot   { color: #1a1a1a; font-weight: bold; }
+    .b-burn  { color: #A32020; font-weight: bold; }
+    .b-perm  { color: #7A3A1A; font-weight: bold; }
+    .b-round { color: #1E5C35; font-weight: bold; }
+    .b-fire  { color: #C05000; font-weight: bold; }
+    .b-light { color: #8A6C00; font-weight: bold; }
+    .b-earth { color: #6B7D20; font-weight: bold; }
+    .b-ice   { color: #1A6090; font-weight: bold; }
+    .b-dark  { color: #2A2060; font-weight: bold; }
+
+    /* Conditions */
+    .cond { font-weight: bold; }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .card-grid  { grid-template-columns: 1fr; }
+      .combo-grid { grid-template-columns: 1fr; }
+      .row        { grid-template-columns: 1fr; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">Red Guard</div>
+    <div class="header-subtitle">Gloomhaven: Jaws of the Lion &nbsp;&middot;&nbsp; Level 4</div>
+  </div>
+
+  <!-- Stat row -->
+  <div class="stat-row">
+    <div class="stat-cell">
+      <div class="stat-label">HP</div>
+      <div class="stat-value">16</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Hand Size</div>
+      <div class="stat-value">10</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Elements</div>
+      <div class="stat-value"><span class="b-fire">[fire]</span> <span class="b-light">[light]</span></div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value">Medium</div>
+    </div>
+  </div>
+
+  <!-- Warning box -->
+  <div class="warning-box">
+    <strong>DPS build — no persistent shield.</strong> Your damage comes from the element cycle, not from soaking hits. Healing Sands BOT is your primary damage mitigation. You are not a tank; don't play like one.
+  </div>
+
+  <!-- Card grid -->
+  <div class="section">
+    <div class="section-title">Your Hand</div>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-name">Flame Shroud</div>
+        <div class="card-init">Initiative 6</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> <span class="b-perm">[PERM]</span> Next 5 times an enemy enters an adjacent hex &rarr; that enemy suffers 2 damage; creates <span class="b-fire">[fire]</span>. Burns after all 5 charges used.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 4; consume <span class="b-fire">[fire]</span> &rarr; <span class="b-round">[ROUND]</span> Shield 1.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Shield of the Desert</div>
+        <div class="card-init">Initiative 10</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 3; consume <span class="b-fire">[fire]</span> &rarr; hit 2 adjacent targets; consume <span class="b-light">[light]</span> &rarr; +1 attack + push 1. With both: attack 4 on 2 targets.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> <span class="b-burn">[BURN]</span> <span class="b-round">[ROUND]</span> Shield 3; creates <span class="b-fire">[fire]</span> + <span class="b-light">[light]</span>.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Shocking Advance</div>
+        <div class="card-init">Initiative 14</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 3, <span class="cond">{immobilize}</span>; consume <span class="b-light">[light]</span> &rarr; <span class="b-round">[ROUND]</span> Shield 1.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 3; creates <span class="b-light">[light]</span>.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Strangling Chain</div>
+        <div class="card-init">Initiative 19</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> <span class="b-round">[ROUND]</span> Attack 3, <span class="cond">{immobilize}</span>; each time the target is attacked this round &rarr; it suffers 1 damage; consume <span class="b-fire">[fire]</span> &rarr; suffer 2 instead.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 4; <span class="cond">{immobilize}</span> all adjacent enemies.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Healing Sands</div>
+        <div class="card-init">Initiative 32</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Heal 4, self.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 3; all attacks targeting you this round gain disadvantage.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Shield Spikes</div>
+        <div class="card-init">Initiative 41</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> <span class="b-perm">[PERM]</span> Retaliate X, self, where X = your current Shield value. Permanently occupies active area; cannot be recovered with a stamina potion while active.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Heal 2, range 2; creates <span class="b-fire">[fire]</span>.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Harvest Sickle</div>
+        <div class="card-init">Initiative 52</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 4, range 2; creates <span class="b-earth">[earth]</span> + <span class="b-light">[light]</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> <span class="b-burn">[BURN]</span> Move 5; loot each hex entered.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Flaming Sickle</div>
+        <div class="card-init">Initiative 63</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 3, range 2, pull 1; creates <span class="b-fire">[fire]</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> All adjacent enemies suffer 1 damage, loot 1; creates <span class="b-fire">[fire]</span>.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Radiant Sickle</div>
+        <div class="card-init">Initiative 79</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Attack 4, range 2; all enemies adjacent to the target suffer 1 damage; creates <span class="b-light">[light]</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> Move 2; Heal 2, range 2.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Desert Night</div>
+        <div class="card-init">Initiative 90</div>
+        <div class="card-action"><span class="b-top">[TOP]</span> Melee attack 2; disarm 1 enemy within 2 hexes (separate effect — lands even if the attack misses); creates <span class="b-ice">[ice]</span> + <span class="b-dark">[dark]</span>.</div>
+        <div class="card-action"><span class="b-bot">[BOT]</span> <span class="b-burn">[BURN]</span> Move 6, jump.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Tactics -->
+  <div class="section">
+    <div class="section-title">Tactics</div>
+
+    <div class="row">
+      <div class="row-label">The element cycle</div>
+      <div class="row-body">Your core pattern: generate <span class="b-fire">[fire]</span> + <span class="b-light">[light]</span> in the same round, then spend both on Shield of the Desert TOP next round — attack 4 on 2 targets. Elements must be spent the round immediately after generation or they go inert. Strong generate combinations: Flaming Sickle TOP + Shocking Advance BOT; Harvest Sickle TOP + Shield Spikes BOT; Radiant Sickle TOP + Shield Spikes BOT (attacks while generating both).</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Strangling Chain</div>
+      <div class="row-body">Best on elites and bosses. Play the TOP early (initiative 19 is fast) so every attack on the target that round triggers suffer damage — including the Demolitionist's. Consuming <span class="b-fire">[fire]</span> raises that from 1 to 2 per hit. The <span class="cond">{immobilize}</span> keeps the target from running so nobody has to chase it.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Healing Sands BOT</div>
+      <div class="row-body">No persistent shield in this build. When you're being hit hard, Healing Sands BOT (all attacks against you gain disadvantage this round) is your main mitigation. Use the TOP sparingly — heal 4 is powerful, but it costs the card for the round.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Flame Shroud BOT</div>
+      <div class="row-body">Your fastest reliable move (Move 4). In this build, use the BOT in almost all cases — the TOP's passive damage rarely justifies losing the mobility. The BOT also lets you consume available <span class="b-fire">[fire]</span> for a Shield 1 bonus if you need it.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Radiant Sickle</div>
+      <div class="row-body">TOP is your strongest no-setup attack — Attack 4 at range 2, plus free suffer 1 damage to any enemies adjacent to your target (goes through shields). Also creates <span class="b-light">[light]</span> for the element cycle. BOT: Heal 2 at range 2 with a move — use this to keep the Demolitionist healthy. You do not need to be adjacent to reach them.</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Desert Night TOP</div>
+      <div class="row-body">Disarm cancels a dangerous enemy's next attack. The disarm is a separate effect from the melee attack — it lands even if your attack misses. Best played before a hard-hitting enemy acts. The <span class="b-ice">[ice]</span> + <span class="b-dark">[dark]</span> go unused in this party.</div>
+    </div>
+
+  </div>
+
+  <!-- Combos -->
+  <div class="section">
+    <div class="section-title">Combos</div>
+    <div class="combo-grid">
+
+      <div class="combo">
+        <div class="combo-title">Element Cycle</div>
+        <div class="combo-body">Round N: generate <span class="b-fire">[fire]</span> + <span class="b-light">[light]</span> in the same round. Standard: Flaming Sickle TOP + Shocking Advance BOT. New option: Radiant Sickle TOP + Shield Spikes BOT — attacks for 4 and heals while generating both elements. Round N+1: Shield of the Desert TOP consumes both &rarr; attack 4 on 2 targets. Aim for this every other round.</div>
+      </div>
+
+      <div class="combo">
+        <div class="combo-title">Strangling Chain Setup</div>
+        <div class="combo-body">Play Strangling Chain TOP (initiative 19) before enemies act. The Demolitionist attacks the <span class="cond">{immobilize}</span>d target later that round — each hit triggers suffer 1 (or 2 if you consumed <span class="b-fire">[fire]</span>). The earlier in the round you play it, the more attacks it multiplies.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Watch out for -->
+  <div class="section">
+    <div class="section-title">Watch Out For</div>
+
+    <div class="row">
+      <div class="row-label danger">Shield of Desert BOT</div>
+      <div class="row-body">Never play the bottom. It is a <span class="b-burn">[BURN]</span> — using it permanently removes your most powerful attack card from the scenario. One round of Shield 3 is never worth that cost.</div>
+    </div>
+    <div class="row">
+      <div class="row-label danger">Shield Spikes TOP</div>
+      <div class="row-body">In this build, never activate the TOP. It is <span class="b-perm">[PERM]</span> — once played it permanently occupies your active area and cannot be recovered with a stamina potion. It provides no benefit in a DPS build.</div>
+    </div>
+    <div class="row">
+      <div class="row-label danger">Strangling Chain timing</div>
+      <div class="row-body">The suffer damage is round-only — if you play it late, there are few or no follow-up attacks left to benefit. Initiative 19 usually gets you in front of enemies; don't hold the card for the end of a round.</div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <hr class="footer-rule">
+    <div class="footer-text">Gloomhaven: Jaws of the Lion &nbsp;&middot;&nbsp; Tabletop edition &nbsp;&middot;&nbsp; Red Guard Level 4 &nbsp;&middot;&nbsp; fuzz-zone/Gloomhaven</div>
+  </div>
+
+</body>
+</html>
